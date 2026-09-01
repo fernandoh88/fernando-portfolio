@@ -8,9 +8,10 @@ type SectionProps = {
   intro?: string
   children: ReactNode
   className?: string
+  revealAmount?: number
 }
 
-export function Section({ id, eyebrow, title, intro, children, className = '' }: SectionProps) {
+export function Section({ id, eyebrow, title, intro, children, className = '', revealAmount = 0.18 }: SectionProps) {
   const reduceMotion = useReducedMotion()
 
   return (
@@ -19,7 +20,7 @@ export function Section({ id, eyebrow, title, intro, children, className = '' }:
       className={`section-shell scroll-mt-28 py-16 sm:py-20 lg:py-24 ${className}`}
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={{ once: true, amount: revealAmount }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
     >
       {(eyebrow || title || intro) && (

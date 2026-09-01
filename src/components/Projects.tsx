@@ -420,6 +420,7 @@ export function Projects() {
       eyebrow="Featured Projects"
       title="Project work with real product structure, not just isolated snippets."
       intro="The featured projects pair real application screenshots with concise implementation details."
+      revealAmount={0.04}
     >
       <article className="premium-card overflow-hidden p-5 sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
