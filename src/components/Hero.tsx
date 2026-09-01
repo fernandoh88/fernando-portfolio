@@ -57,10 +57,12 @@ export function Hero() {
           </a>
           <a
             href="/Fernando_Machado_IT_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-[6px] border border-white/12 bg-zinc-950/50 px-5 py-2.5 text-sm font-semibold text-zinc-100 transition duration-300 ease-out hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-white/[0.055] focus-visible:outline-cyan-200"
           >
             <Download size={16} aria-hidden="true" />
-            Download résumé
+            View résumé
           </a>
         </div>
         <dl className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm text-zinc-400 sm:grid-cols-[1.2fr_1fr_1fr]">

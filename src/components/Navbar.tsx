@@ -106,10 +106,12 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="/Fernando_Machado_IT_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/15"
           >
             <Download size={16} aria-hidden="true" />
-            Download Resume
+            View résumé
           </a>
         </div>
 
@@ -146,10 +148,12 @@ export function Navbar() {
             })}
             <a
               href="/Fernando_Machado_IT_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border border-cyan-300/30 bg-cyan-300/10 px-4 py-3 text-sm font-medium text-cyan-100"
             >
               <Download size={16} aria-hidden="true" />
-              Download Resume
+              View résumé
             </a>
           </div>
         </div>
