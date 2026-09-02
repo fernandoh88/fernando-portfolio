@@ -1,7 +1,20 @@
 import { GraduationCap } from 'lucide-react'
 import { Section } from './Section'
 
-const coursework = ['Web development', 'Programming fundamentals', 'Databases', 'Systems analysis', 'Networking concepts']
+const coursework = [
+  'Web Development',
+  'Programming Fundamentals',
+  'Full-Stack Development with JavaScript',
+  'Databases I & II',
+  'Systems Analysis & Design',
+  'Operating Systems',
+  'Virtualization & Computer Networking',
+  'Cloud Infrastructure',
+  'Scripting for Cybersecurity',
+  'Mobile Application Development',
+  'Machine Learning',
+  'Software Engineering',
+]
 
 export function Education() {
   return (
@@ -23,10 +36,13 @@ export function Education() {
             <span className="border border-white/10 px-3 py-1.5 text-sm text-zinc-500">2024-2026</span>
           </div>
           <div className="mt-6">
-            <p className="mono text-xs uppercase tracking-[0.22em] text-zinc-500">Relevant coursework</p>
+            <p className="mono text-xs uppercase tracking-[0.22em] text-zinc-500">Relevant Coursework</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {coursework.map((item) => (
-                <span key={item} className="border border-white/10 bg-white/[0.025] px-3 py-2 text-sm text-zinc-300">
+                <span
+                  key={item}
+                  className="max-w-full border border-white/10 bg-white/[0.025] px-3 py-2 text-sm text-zinc-300"
+                >
                   {item}
                 </span>
               ))}
