@@ -1,5 +1,4 @@
 import { About } from './components/About'
-import { BuiltForWeb } from './components/BuiltForWeb'
 import { Contact } from './components/Contact'
 import { Education } from './components/Education'
 import { Experience } from './components/Experience'
@@ -17,7 +16,6 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <BuiltForWeb />
         <Skills />
         <Projects />
         <Experience />
