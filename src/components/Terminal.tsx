@@ -76,7 +76,10 @@ Firebase`}</span>
 04  Globalfer Website
     Business website & quote request platform
 
-Try: projects silent-auction, projects workout-planner, projects spam-detector, projects globalfer`}</span>
+05  LegalFit
+    Full-stack lawyer discovery application
+
+Try: projects silent-auction, projects workout-planner, projects spam-detector, projects globalfer, projects legalfit`}</span>
   ),
   'projects silent-auction': (
     <span className="whitespace-pre-wrap">{`Silent Auction Platform
@@ -110,6 +113,25 @@ Live website: `}
       {'\n'}Source:{' '}
       <TerminalLink href="https://github.com/fernandoh88/globalfer-site">
         github.com/fernandoh88/globalfer-site
+      </TerminalLink>
+    </span>
+  ),
+  'projects legalfit': (
+    <span className="whitespace-pre-wrap">
+      {`LegalFit
+Full-stack lawyer discovery application
+
+A British Columbia lawyer-discovery demo with guided intake, explainable experience matching, and fictional lawyer profiles with relevant case metadata.
+
+The public demo uses fictional lawyers and cases with mock classification. The free Render service may take a moment to wake.
+
+React / TypeScript / Vite / Node.js / Express / Zod / Docker / Render
+
+Live demo: `}
+      <TerminalLink href="https://legalfit-demo.onrender.com/">legalfit-demo.onrender.com</TerminalLink>
+      {'\n'}Source:{' '}
+      <TerminalLink href="https://github.com/fernandoh88/legalfit">
+        github.com/fernandoh88/legalfit
       </TerminalLink>
     </span>
   ),

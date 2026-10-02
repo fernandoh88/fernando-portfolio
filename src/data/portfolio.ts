@@ -152,6 +152,18 @@ export const projects = [
     },
     featured: false,
   },
+  {
+    title: 'LegalFit',
+    label: 'Full-stack lawyer discovery application',
+    description:
+      'A full-stack lawyer-discovery demo for British Columbia that guides users from a legal situation description to ranked experience matches. Users can explore fictional lawyer profiles and relevant case metadata, with explainable matching based on practice area, issues, location, and demo experience. The public demo uses fictional data and mock classification.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'Zod', 'Docker', 'Render'],
+    links: {
+      project: 'https://legalfit-demo.onrender.com/',
+      source: 'https://github.com/fernandoh88/legalfit',
+    },
+    featured: false,
+  },
 ]
 
 export const experienceBullets = [

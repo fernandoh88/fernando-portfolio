@@ -11,7 +11,35 @@ type Screenshot = {
   alt: string
 }
 
-type Gallery = 'silent-auction' | 'workout-planner' | 'spam-email-detection' | 'globalfer'
+type Gallery = 'silent-auction' | 'workout-planner' | 'spam-email-detection' | 'globalfer' | 'legalfit'
+
+const legalfitScreenshots: Screenshot[] = [
+  {
+    title: 'Experience Matching',
+    description: 'Classified issue categories and ranked fictional lawyer matches, with relevant experience and location details.',
+    src: '/images/projects/legalfit/matches.jpg',
+    alt: 'LegalFit demo results showing employment-law issues and fictional lawyer experience matches',
+  },
+  {
+    title: 'Guided Intake',
+    description: 'A simple intake form collects a fictional situation and city in British Columbia to start the discovery flow.',
+    src: '/images/projects/legalfit/intake.jpg',
+    alt: 'LegalFit intake form with a fictional employment example and Vancouver selected as the city',
+  },
+  {
+    title: 'Lawyer Profiles',
+    description: 'Fictional lawyer profiles show practice areas, languages, experience summaries, and related demo case metadata.',
+    src: '/images/projects/legalfit/profile.jpg',
+    alt: 'LegalFit fictional lawyer profile for Ava Chen with practice areas and relevant experience',
+  },
+]
+
+const legalfitHighlights = [
+  { title: 'Guided Intake', description: 'A validated intake flow identifies general legal issue categories from a situation description.' },
+  { title: 'Explainable Matching', description: 'Deterministic scores combine practice areas, issue overlap, location, and relevant fictional case experience.' },
+  { title: 'Lawyer Profiles', description: 'Browse fictional profiles with practice areas, languages, experience summaries, and demo cases.' },
+  { title: 'Optional AI Integration', description: 'A server-side OpenAI adapter supports structured classification with Zod validation. The public demo uses mock mode.' },
+]
 
 const globalferScreenshots: Screenshot[] = [
   {
@@ -108,6 +136,7 @@ const spamScreenshots: Screenshot[] = [
 ]
 
 const galleries: Record<Gallery, Screenshot[]> = {
+  legalfit: legalfitScreenshots,
   globalfer: globalferScreenshots,
   'silent-auction': silentAuctionScreenshots,
   'workout-planner': workoutScreenshots,
@@ -401,7 +430,7 @@ function PipelineStep({ title, detail, accent = false }: { title: string; detail
 }
 
 export function Projects() {
-  const [silentAuction, workoutPlanner, spamProject, globalferProject, ...rest] = projects
+  const [silentAuction, workoutPlanner, spamProject, globalferProject, legalfitProject, ...rest] = projects
   const [lightbox, setLightbox] = useState<{ gallery: Gallery; index: number } | null>(null)
 
   useEffect(() => {
@@ -451,7 +480,7 @@ export function Projects() {
       eyebrow="Featured Projects"
       title="Project work with real product structure, not just isolated snippets."
       intro="The featured projects pair real application screenshots with concise implementation details."
-      revealAmount={0.04}
+      revealAmount={0}
     >
       <article className="premium-card overflow-hidden p-5 sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
@@ -753,6 +782,80 @@ export function Projects() {
             <p className="mono text-xs uppercase tracking-[0.22em] text-cyan-300/75">Project Highlights</p>
             <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {globalferHighlights.map((highlight) => (
+                <div key={highlight.title} className="border border-white/10 bg-white/[0.025] p-4">
+                  <h4 className="text-sm font-semibold text-zinc-100">{highlight.title}</h4>
+                  <p className="mt-2 text-sm leading-6 text-zinc-500">{highlight.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      )}
+
+      {legalfitProject && (
+        <article id="legalfit" className="premium-card mt-8 scroll-mt-28 overflow-hidden p-5 sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+              <p className="mono text-xs uppercase tracking-[0.22em] text-cyan-300/80">05 / Web Application</p>
+              <h3 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{legalfitProject.title}</h3>
+              <p className="mt-3 text-lg text-zinc-300">{legalfitProject.label}</p>
+              <p className="mt-5 text-base leading-7 text-zinc-400">{legalfitProject.description}</p>
+            </div>
+            <div>
+              <div className="flex flex-wrap gap-2 lg:justify-end">
+                {legalfitProject.technologies.map((tech) => (
+                  <span key={tech} className="border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-zinc-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:justify-end">
+                <a
+                  href={legalfitProject.links.project}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-cyan-300/35 bg-cyan-300/[0.08] px-4 py-2.5 text-sm font-semibold text-zinc-50 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-300/[0.14]"
+                >
+                  Live Demo
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                <a
+                  href={legalfitProject.links.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-white/12 bg-zinc-950/50 px-4 py-2.5 text-sm font-semibold text-zinc-100 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-white/[0.055]"
+                >
+                  <Code2 size={16} aria-hidden="true" />
+                  Source Code
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-zinc-500 lg:text-right">
+                The free Render demo may take about a minute to wake after inactivity.
+              </p>
+            </div>
+          </div>
+          <div className="mt-10">
+            <BrowserFrame
+              screenshot={legalfitScreenshots[0]}
+              domain="legalfit-demo.onrender.com"
+              onOpen={() => openLightbox('legalfit', 0)}
+            />
+          </div>
+          <div className="mt-7 grid gap-7 md:grid-cols-2">
+            {legalfitScreenshots.slice(1).map((screenshot, index) => (
+              <BrowserFrame
+                key={screenshot.src}
+                screenshot={screenshot}
+                domain="legalfit-demo.onrender.com"
+                onOpen={() => openLightbox('legalfit', index + 1)}
+              />
+            ))}
+          </div>
+          <div className="mt-12 border-t border-white/10 pt-8">
+            <p className="mono text-xs uppercase tracking-[0.22em] text-cyan-300/75">Project Highlights</p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {legalfitHighlights.map((highlight) => (
                 <div key={highlight.title} className="border border-white/10 bg-white/[0.025] p-4">
                   <h4 className="text-sm font-semibold text-zinc-100">{highlight.title}</h4>
                   <p className="mt-2 text-sm leading-6 text-zinc-500">{highlight.description}</p>
