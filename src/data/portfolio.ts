@@ -140,6 +140,18 @@ export const projects = [
     links: { project: '', source: 'https://github.com/fernandoh88/spam-email-detection-ml' },
     featured: false,
   },
+  {
+    title: 'Globalfer Website',
+    label: 'Business website & quote request platform',
+    description:
+      'A responsive website for a construction steel supplier, featuring a product catalog, service information, and direct WhatsApp contact. Customers can request custom quotes for multiple products with individual measurements through a validated form connected to a Node.js API and email workflow.',
+    technologies: ['React', 'Vite', 'CSS Modules', 'Node.js', 'Express', 'Nodemailer', 'Firebase Hosting', 'Cloud Run'],
+    links: {
+      project: 'https://globalfer-site.web.app/',
+      source: 'https://github.com/fernandoh88/globalfer-site',
+    },
+    featured: false,
+  },
 ]
 
 export const experienceBullets = [

@@ -73,7 +73,10 @@ Firebase`}</span>
 03  Spam Email Detection
     Machine-learning classification project
 
-Try: projects silent-auction, projects workout-planner, projects spam-detector`}</span>
+04  Globalfer Website
+    Business website & quote request platform
+
+Try: projects silent-auction, projects workout-planner, projects spam-detector, projects globalfer`}</span>
   ),
   'projects silent-auction': (
     <span className="whitespace-pre-wrap">{`Silent Auction Platform
@@ -92,6 +95,23 @@ Java / Android SDK / Firebase / Retrofit / Wger API`}</span>
 Machine-learning classification project
 
 Python / Pandas / Scikit-learn / Random Forest / Jupyter Notebook`}</span>
+  ),
+  'projects globalfer': (
+    <span className="whitespace-pre-wrap">
+      {`Globalfer Website
+Business website & quote request platform
+
+A responsive website for a construction steel supplier, with a product catalog, WhatsApp contact, and custom quote requests with individual product measurements.
+
+React / Vite / CSS Modules / Node.js / Express / Nodemailer / Firebase Hosting / Cloud Run
+
+Live website: `}
+      <TerminalLink href="https://globalfer-site.web.app/">globalfer-site.web.app</TerminalLink>
+      {'\n'}Source:{' '}
+      <TerminalLink href="https://github.com/fernandoh88/globalfer-site">
+        github.com/fernandoh88/globalfer-site
+      </TerminalLink>
+    </span>
   ),
   contact: (
     <span className="whitespace-pre-wrap">

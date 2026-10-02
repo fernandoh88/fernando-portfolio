@@ -11,7 +11,35 @@ type Screenshot = {
   alt: string
 }
 
-type Gallery = 'silent-auction' | 'workout-planner' | 'spam-email-detection'
+type Gallery = 'silent-auction' | 'workout-planner' | 'spam-email-detection' | 'globalfer'
+
+const globalferScreenshots: Screenshot[] = [
+  {
+    title: 'Business Homepage',
+    description: 'Responsive business website introducing Globalfer and guiding visitors to products, quotes, and direct contact.',
+    src: '/images/projects/globalfer/desktop-home.jpg',
+    alt: 'Globalfer homepage with custom construction steel services and quote request links',
+  },
+  {
+    title: 'Product Catalog',
+    description: 'A catalog of construction steel products with images, application details, and links to request a quote.',
+    src: '/images/projects/globalfer/product-catalog.jpg',
+    alt: 'Globalfer construction steel product catalog',
+  },
+  {
+    title: 'Custom Quote Requests',
+    description: 'A dynamic form collects contact details and measurements for up to 30 products in a single request.',
+    src: '/images/projects/globalfer/quote-form.jpg',
+    alt: 'Globalfer quote request form with contact details and an add-product control',
+  },
+]
+
+const globalferHighlights = [
+  { title: 'Product Discovery', description: 'Ten construction steel products with images, descriptions, and common uses.' },
+  { title: 'Custom Quotes', description: 'Customers add products and measurements to one request, with validation and submission feedback.' },
+  { title: 'Direct Contact', description: 'WhatsApp links, click-to-copy phone numbers, and business contact information.' },
+  { title: 'Full-stack Delivery', description: 'React frontend on Firebase Hosting, with an Express and Nodemailer quote API on Cloud Run.' },
+]
 
 const silentAuctionScreenshots: Screenshot[] = [
   {
@@ -80,6 +108,7 @@ const spamScreenshots: Screenshot[] = [
 ]
 
 const galleries: Record<Gallery, Screenshot[]> = {
+  globalfer: globalferScreenshots,
   'silent-auction': silentAuctionScreenshots,
   'workout-planner': workoutScreenshots,
   'spam-email-detection': spamScreenshots,
@@ -149,10 +178,12 @@ const implementationNotes = [
 function BrowserFrame({
   screenshot,
   featured = false,
+  domain = 'silent-auction.app',
   onOpen,
 }: {
   screenshot: Screenshot
   featured?: boolean
+  domain?: string
   onOpen: () => void
 }) {
   const reduceMotion = useReducedMotion()
@@ -175,7 +206,7 @@ function BrowserFrame({
           <span className="h-2.5 w-2.5 rounded-full bg-red-300/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-amber-300/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-300/70" />
-          <span className="mono ml-2 truncate text-xs text-zinc-500">silent-auction.app</span>
+          <span className="mono ml-2 truncate text-xs text-zinc-500">{domain}</span>
         </div>
         <div className={`grid place-items-center bg-black/28 p-3 sm:p-4 ${featured ? 'min-h-[360px]' : 'min-h-[240px]'}`}>
           <img
@@ -370,7 +401,7 @@ function PipelineStep({ title, detail, accent = false }: { title: string; detail
 }
 
 export function Projects() {
-  const [silentAuction, workoutPlanner, spamProject, ...rest] = projects
+  const [silentAuction, workoutPlanner, spamProject, globalferProject, ...rest] = projects
   const [lightbox, setLightbox] = useState<{ gallery: Gallery; index: number } | null>(null)
 
   useEffect(() => {
@@ -656,6 +687,77 @@ export function Projects() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </article>
+      )}
+
+      {globalferProject && (
+        <article id="globalfer" className="premium-card mt-8 scroll-mt-28 overflow-hidden p-5 sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+              <p className="mono text-xs uppercase tracking-[0.22em] text-cyan-300/80">04 / Business Website</p>
+              <h3 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{globalferProject.title}</h3>
+              <p className="mt-3 text-lg text-zinc-300">{globalferProject.label}</p>
+              <p className="mt-5 text-base leading-7 text-zinc-400">{globalferProject.description}</p>
+            </div>
+            <div>
+              <div className="flex flex-wrap gap-2 lg:justify-end">
+                {globalferProject.technologies.map((tech) => (
+                  <span key={tech} className="border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-zinc-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:justify-end">
+                <a
+                  href={globalferProject.links.project}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-cyan-300/35 bg-cyan-300/[0.08] px-4 py-2.5 text-sm font-semibold text-zinc-50 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-300/[0.14]"
+                >
+                  Live Website
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                <a
+                  href={globalferProject.links.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-white/12 bg-zinc-950/50 px-4 py-2.5 text-sm font-semibold text-zinc-100 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-white/[0.055]"
+                >
+                  <Code2 size={16} aria-hidden="true" />
+                  Source Code
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-10">
+            <BrowserFrame
+              screenshot={globalferScreenshots[0]}
+              domain="globalfer-site.web.app"
+              onOpen={() => openLightbox('globalfer', 0)}
+            />
+          </div>
+          <div className="mt-7 grid gap-7 md:grid-cols-2">
+            {globalferScreenshots.slice(1).map((screenshot, index) => (
+              <BrowserFrame
+                key={screenshot.src}
+                screenshot={screenshot}
+                domain="globalfer-site.web.app"
+                onOpen={() => openLightbox('globalfer', index + 1)}
+              />
+            ))}
+          </div>
+          <div className="mt-12 border-t border-white/10 pt-8">
+            <p className="mono text-xs uppercase tracking-[0.22em] text-cyan-300/75">Project Highlights</p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {globalferHighlights.map((highlight) => (
+                <div key={highlight.title} className="border border-white/10 bg-white/[0.025] p-4">
+                  <h4 className="text-sm font-semibold text-zinc-100">{highlight.title}</h4>
+                  <p className="mt-2 text-sm leading-6 text-zinc-500">{highlight.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </article>
